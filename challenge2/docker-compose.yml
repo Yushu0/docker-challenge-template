@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  node_app:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - node_app
+
